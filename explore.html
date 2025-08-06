@@ -3,24 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>explore | math-u-t</title>
-  <link rel="stylesheet" href="style/explore.css">
+
+  <!-- FontAwesome CDN読み込み -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="image/favicon.png" type="image/png">
+  <script src="src/import.js" defer></script>
 </head>
 <body>
   <nav class="nav-back">
     <a href="index.html">ホームに戻る</a>
   </nav>
-
   <header>
     <div class="container">
       <div class="hero-content">
         <h1 class="hero-title">発見したこと</h1>
         <p class="hero-subtitle">学習と実験の記録</p>
-        <p class="hero-description">
-          プログラミングや数学を学ぶ中で気づいたこと、発見したアルゴリズムや<br>
-          面白い現象を記録しています。小さな発見も大切にしています。
-        </p>
+        <p class="hero-description">プログラミングや数学を学ぶ中で気づいたこと、発見したアルゴリズムや
+          <br>面白い現象を記録しています。小さな発見も大切にしています。</p>
       </div>
     </div>
   </header>
@@ -28,19 +30,64 @@
   <main class="main-content">
     <div class="container">
       <div class="discoveries-grid">
+        <a href="https://math-u-t.github.com/pages/1.html">
+          <article class="discovery-card">
+            <div class="discovery-header">
+              <span class="discovery-icon">
+                <!-- GoogleのFontAwesome -->
+                <i class="fa-brands fa-google"></i>
+              </span>
+              <h2 class="discovery-title">GoogleAppsScriptのフレームワーク[Linkgs]</h2>
+              <span class="discovery-date">2025.08.06</span>
+            </div>
+            <div class="discovery-content">
+              <p>GoogleAppsScriptに新しい機能「ページ遷移」を容易に実装できるフレームワーク「Linkgs」を作成しました！</p>
+              <h3>GoogleAppsScriptのフレームワーク[Linkgs]</h3>
+              <p>
+                通常のように<span class="highlight">href</span>属性を使用できます。
+              </p>
+              <div class="code-block">
+function returnHTML(templateObj, file, title) {
+  const now = new Date();
 
-<!-- 今後作る際の例としてメモを残しておく
--->
+  const mainTemplate = HtmlService.createTemplateFromFile(file);
+  for (const key in templateObj) {
+    mainTemplate[key] = templateObj[key];
+  }
 
+  const linkTemplate = HtmlService.createTemplateFromFile("link.js");
+  for (const key in templateObj) {
+    linkTemplate[key] = templateObj[key];
+  }
+
+  const mainHtml = mainTemplate.evaluate().getContent();
+  const linkHtml = linkTemplate.evaluate().getContent();
+
+  const finalHtml = mainHtml + linkHtml;
+
+  const output = HtmlService.createHtmlOutput(finalHtml)
+    .setTitle(title)
+    .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL)
+    .setFaviconUrl(sc_props("favicon"))
+    .addMetaTag("viewport", "width=device-width, initial-scale=1")
+    .addMetaTag("google-site-verification", "spirix | " + now);
+
+  return output;
+}
+              </div>
+              <p>これにより、GoogleAppsScriptに容易にページ遷移を実装できるようになりました。</p>
+            </div>
+            <div class="tags-container">
+              <span class="tag">GoogleAppsScript</span>
+              <span class="tag">フレームワーク</span>
+              <span class="tag">軽量</span>
+            </div>
+          </article>
+        </a>
       </div>
     </div>
   </main>
-  <footer style="background: rgba(0, 0, 0, 0.3); backdrop-filter: blur(10px); border-top: 1px solid rgba(255, 255, 255, 0.1); padding: 2rem 0; text-align: center; margin-top: 4rem;">
-    <div class="container">
-      <p style="color: #808080; font-size: 0.9rem;">
-        © 2024 math-u-t | 学習の記録を大切に
-      </p>
-    </div>
-  </footer>
+  
+  <import src="common/footer.html"></import>
 </body>
 </html>

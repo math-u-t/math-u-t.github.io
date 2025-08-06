@@ -5,18 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home | math-u-t</title>
 
-  <link rel="stylesheet" href="style/index.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="image/favicon.png" type="image/png">
+  <script src="src/import.js" defer></script>
 </head>
 <body>
+
   <header>
     <div class="container">
       <div class="hero-content">
-        <h1 class="hero-title glow">math-u-t</h1>
+        <h1 class="hero-title">math-u-t</h1>
         <p class="hero-subtitle">コードと数学</p>
         <p class="hero-description">
           2010年生まれの情報・数学に興味がある中学生です。<br>
-          美しいコードと数学的思考で問題を解決することが好きです。<br>
-          また、最近<a href="https://math-u-t.github.io/explore.html">発見したこと</a>をまとめています。
+          美しいコードと数学思考で問題を解決することが好きです。
+          また、<span class="code-highlight"><a href="https://math-u-t.github.io/explore.html" target="_blank">ブログ</a></span>をこのページにまとめています。
         </p>
       </div>
     </div>
@@ -30,14 +33,12 @@
           <h3>ウェブアプリ開発</h3>
           <p>
             HTML, CSS, JavaScript, tailwindなど<br>
-            詳細は<a href="https://github.com/math-u-t/web-app">こちら</a>
+            詳細は<a href="https://github.com/math-u-t/web-app" target="_blank">こちら</a>
           </p>
         </div>
         <div class="skill-card">
           <h3>疑似的なバックエンド開発</h3>
-          <p>
-            GoogleAppsScriptとGoogleスプレッドシートなどを活用したGooogle関係のサービス作成
-          </p>
+          <p>GoogleAppsScriptとGoogleスプレッドシートなどを活用したGooogle関係のサービス作成</p>
         </div>
         <div class="skill-card">
           <h3>LaTeX</h3>
@@ -51,7 +52,7 @@
           <h3>AI開発</h3>
           <p>
             AIを作成するのではなく、AIを活用する形で使用しています。<br>
-            <a href="https://chat.com">ChatGPT</a>と<a href="claude.ai">ClaudeAI</a>をよく使用しています。
+            <a href="https://chat.com" target="_blank">ChatGPT</a>と<a href="https://claude.ai" target="_blank">ClaudeAI</a>をよく使用しています。
           </p>
         </div>
       </div>
@@ -66,30 +67,13 @@
           <h3 class="project-title">copy.js</h3>
           <p>簡単に使えるcopy.jsというJavaScriptフレームワークを開発中です。<br>
           <span class="code-highlight">
-            <a href="https://github.com/math-u-t/copy-js">詳しくはこちら</a>
+            <a href="https://github.com/math-u-t/copy-js" target="_blank">詳しくはこちら</a>
           </span>
         </div>
       </div>
     </div>
   </section>
   
-  <footer>
-    <div class="container">
-      <h2 class="section-title">アカウント・連絡先</h2>
-      <div class="social-links">
-        <a href="https://discord.gg/MGqsZZWCaM" class="social-link">Discord</a>
-        <a href="https://x.com/t_math_u" class="social-link">X (Twitter)</a>
-        <a href="https://github.com/math-u-t" class="social-link">GitHub</a>
-      </div>
-      <div style="text-align: center; margin-top: 2rem; opacity: 0.7;">
-        <p><strong>よく使用するユーザー名:</strong></p>
-        <p><span class="code-highlight">math-u-t</span> | <span class="code-highlight">t_math_u</span> | <span class="code-highlight">math.u.t</span></p>
-      </div>
-      <div class="copyright">
-        <p>このページはClaudeAIを使用して作成しました。
-        </p>
-      </div>
-    </div>
-  </footer>
+  <import src="common/footer.html"></import>
 </body>
 </html>

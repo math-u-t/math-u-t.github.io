@@ -1,4 +1,3 @@
-/* Reset and Base Styles */
 * {
   margin: 0;
   padding: 0;
@@ -19,7 +18,6 @@ body {
   padding: 0 2rem;
 }
 
-/* Header Section */
 header {
   min-height: 100vh;
   display: flex;
@@ -29,6 +27,10 @@ header {
   background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5));
   position: relative;
   overflow: hidden;
+}
+
+header.discovery-header {
+  min-height: 60vh;
 }
 
 header::before {
@@ -45,9 +47,28 @@ header::before {
   animation: float 20s ease-in-out infinite;
 }
 
+header.discovery-header::before {
+  background:
+    radial-gradient(circle at 30% 60%, rgba(120, 119, 198, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 70% 30%, rgba(255, 119, 198, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(120, 219, 226, 0.2) 0%, transparent 50%);
+  animation: float 25s ease-in-out infinite;
+}
+
 @keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(180deg); }
+  0%,
+  100% {transform: translateY(0px) rotate(0deg); }
+  50% {transform: translateY(-20px) rotate(180deg);}
+}
+
+header.discovery-header::before {
+  animation: float-discovery 25s ease-in-out infinite;
+}
+
+@keyframes float-discovery {
+  0%,
+  100% {transform: translateY(0px) rotate(0deg);}
+  50% {transform: translateY(-15px) rotate(90deg);}
 }
 
 .hero-content {
@@ -67,6 +88,11 @@ header::before {
   animation: gradient-shift 3s ease-in-out infinite;
 }
 
+header.discovery-header .hero-title {
+  font-size: 3.5rem;
+  animation: gradient-shift 4s ease-in-out infinite;
+}
+
 @keyframes gradient-shift {
   0%, 100% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
@@ -83,6 +109,11 @@ header::before {
   font-weight: 300;
 }
 
+header.discovery-header .hero-subtitle {
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+}
+
 .hero-description {
   font-size: 1.1rem;
   color: #c0c0c0;
@@ -91,10 +122,50 @@ header::before {
   line-height: 1.8;
 }
 
-/* Section Styles */
+header.discovery-header .hero-description {
+  max-width: 700px;
+}
+
+.nav-back {
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
+  z-index: 1000;
+}
+
+.nav-back a {
+  display: inline-flex;
+  align-items: center;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 0.8rem 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.nav-back a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.nav-back a::before {
+  content: '←';
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+}
+
 section {
   padding: 5rem 0;
   position: relative;
+}
+
+.main-content {
+  padding: 4rem 0;
 }
 
 .section-title {
@@ -118,7 +189,6 @@ section {
   border-radius: 2px;
 }
 
-/* Skills Section */
 #skills {
   background: rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(10px);
@@ -134,7 +204,7 @@ section {
 .skill-card {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 15px;
   padding: 2rem;
   transition: all 0.3s ease;
@@ -186,7 +256,6 @@ section {
   text-decoration: underline;
 }
 
-/* Projects Section */
 .projects-grid {
   display: grid;
   gap: 2rem;
@@ -250,7 +319,161 @@ section {
   color: #ff6b6b;
 }
 
-/* Footer Section */
+.discoveries-grid {
+  display: grid;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.discovery-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 3rem;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.discovery-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #ff6b6b);
+  background-size: 300% 300%;
+  animation: gradient-border 6s ease-in-out infinite;
+}
+
+@keyframes gradient-border {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.discovery-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.discovery-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.discovery-icon {
+  font-size: 2.5rem;
+  margin-right: 1rem;
+}
+
+.discovery-title {
+  font-size: 1.8rem;
+  color: #ffffff;
+  font-weight: 400;
+  flex: 1;
+  min-width: 250px;
+}
+
+.discovery-date {
+  color: #a0a0a0;
+  font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+}
+
+.discovery-content {
+  color: #d0d0d0;
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+.discovery-content h3 {
+  color: #ffffff;
+  margin: 1.5rem 0 1rem 0;
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+
+.discovery-content p {
+  margin-bottom: 1.2rem;
+}
+
+.discovery-content ul,
+.discovery-content ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.discovery-content li {
+  margin-bottom: 0.5rem;
+}
+
+.code-block {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
+  color: #e0e0e0;
+  overflow-x: auto;
+  position: relative;
+}
+
+.code-block::before {
+  content: 'Code';
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  color: #888;
+  font-size: 0.8rem;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.highlight {
+  background: linear-gradient(45deg, rgba(255, 107, 107, 0.2), rgba(78, 205, 196, 0.2));
+  padding: 0.2rem 0.5rem;
+  border-radius: 5px;
+  color: #ffffff;
+}
+
+.math-formula {
+  background: rgba(120, 119, 198, 0.1);
+  border: 1px solid rgba(120, 119, 198, 0.3);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+  text-align: center;
+  font-family: 'Times New Roman', serif;
+  font-size: 1.1rem;
+  color: #e0e0e0;
+}
+
+.tag {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.1);
+  color: #4ecdc4;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  margin: 0.2rem;
+  border: 1px solid rgba(78, 205, 196, 0.3);
+}
+
+.tags-container {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 footer {
   background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(10px);
@@ -293,14 +516,19 @@ footer {
   font-size: 0.9rem;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
-  .hero-title {
+  .hero-title,
+  header.discovery-header .hero-title {
     font-size: 2.5rem;
   }
   
-  .hero-subtitle {
+  .hero-subtitle,
+  header.discovery-header .hero-subtitle {
     font-size: 1.2rem;
+  }
+  
+  header.discovery-header .hero-subtitle {
+    font-size: 1.1rem;
   }
   
   .hero-description {
@@ -324,6 +552,19 @@ footer {
     padding: 1.5rem;
   }
   
+  .discovery-card {
+    padding: 2rem;
+  }
+
+  .discovery-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .discovery-title {
+    min-width: auto;
+  }
+  
   .social-links {
     gap: 1rem;
   }
@@ -332,10 +573,22 @@ footer {
     padding: 0.6rem 1.2rem;
     font-size: 0.9rem;
   }
+  
+  .nav-back {
+    top: 1rem;
+    left: 1rem;
+  }
+
+  .user-name {
+    text-align: center;
+    margin-top: 2rem;
+    opacity: 0.7;
+  }
 }
 
 @media (max-width: 480px) {
-  .hero-title {
+  .hero-title,
+  header.discovery-header .hero-title {
     font-size: 2rem;
   }
   
@@ -345,5 +598,17 @@ footer {
   
   .container {
     padding: 0 0.5rem;
+  }
+  
+  .discovery-card {
+    padding: 1.5rem;
+  }
+
+  .discovery-icon {
+    font-size: 2rem;
+  }
+
+  .discovery-title {
+    font-size: 1.5rem;
   }
 }
