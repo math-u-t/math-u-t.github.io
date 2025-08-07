@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,73 +7,60 @@
 
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="image/favicon.png" type="image/png">
-  <script src="src/import.js" defer></script>
 </head>
 <body>
-
-  <header>
+  <header aria-label="ヘッダー">
     <div class="container">
       <div class="hero-content">
         <h1 class="hero-title">math-u-t</h1>
         <p class="hero-subtitle">コードと数学</p>
         <p class="hero-description">
           2010年生まれの情報・数学に興味がある中学生です。<br>
-          美しいコードと数学思考で問題を解決することが好きです。
-          また、<span class="code-highlight"><a href="https://math-u-t.github.io/explore.html" target="_blank">ブログ</a></span>をこのページにまとめています。
+          美しいコードと数学思考で問題を解決することが好きです。<br>
+          また、<a href="https://math-u-t.github.io/explore.html">ブログ</a>をこのページにまとめています。
         </p>
       </div>
     </div>
   </header>
-  
-  <section id="skills">
-    <div class="container">
-      <h2 class="section-title">趣味・興味</h2>
-      <div class="skills-grid">
-        <div class="skill-card">
-          <h3>ウェブアプリ開発</h3>
-          <p>
-            HTML, CSS, JavaScript, tailwindなど<br>
-            詳細は<a href="https://github.com/math-u-t/web-app" target="_blank">こちら</a>
-          </p>
-        </div>
-        <div class="skill-card">
-          <h3>疑似的なバックエンド開発</h3>
-          <p>GoogleAppsScriptとGoogleスプレッドシートなどを活用したGooogle関係のサービス作成</p>
-        </div>
-        <div class="skill-card">
-          <h3>LaTeX</h3>
-          <p>綺麗な数式を使用した文書の作成</p>
-        </div>
-        <div class="skill-card">
-          <h3>Python</h3>
-          <p>主にデータ分析機能とアルゴリズムの実験場として使用しています。</p>
-        </div>
-        <div class="skill-card">
-          <h3>AI開発</h3>
-          <p>
-            AIを作成するのではなく、AIを活用する形で使用しています。<br>
-            <a href="https://chat.com" target="_blank">ChatGPT</a>と<a href="https://claude.ai" target="_blank">ClaudeAI</a>をよく使用しています。
-          </p>
-        </div>
+  <main>
+    <section class="skills-grid" aria-label="スキル一覧">
+      <div class="skills-card">
+        <h2>ウェブアプリ開発</h2>
+        <p>
+          HTML, CSS, JavaScriptなど<br>
+          詳細は<a href="https://github.com/math-u-t/web-app">こちら</a>です。
+        </p>
       </div>
-    </div>
-  </section>
-
-  <section id="projects">
-    <div class="container">
-      <h2 class="section-title">最近取り組んでいること</h2>
-      <div class="projects-grid">
-        <div class="project-card">
-          <h3 class="project-title">copy.js</h3>
-          <p>簡単に使えるcopy.jsというJavaScriptフレームワークを開発中です。<br>
-          <span class="code-highlight">
-            <a href="https://github.com/math-u-t/copy-js" target="_blank">詳しくはこちら</a>
-          </span>
-        </div>
+      <div class="skills-card">
+        <h2>疑似的なバックエンド開発</h2>
+        <p>
+          GoogleAppsScriptとGoogleスプレッドシートなどを活用したGooole関係のサービス作成をしています。<br>
+          ページ遷移フレームワーク「<code>Link.gs</code>」を使用して効率的に作成できます。
+        </p>
       </div>
-    </div>
-  </section>
-  
+      <div class="skills-card">
+        <h2>LaTeX</h2>
+        <p>
+          美しい数式を用いた文章の作成ができます。<br>
+          主にoverleafを使用しています。
+        </p>
+      </div>
+      <div class="skills-card">
+        <h2>Python</h2>
+        <p>
+          主にデータ分析機能とアルゴリズムの実験場として使用しています<br>
+          Seleniumが使えて僕の使える言語なので、アーカイブを作成するのに役立っています。
+        </p>
+      </div>
+      <div class="skills-card">
+        <h2>AI開発</h2>
+        <p>
+          AIを作成するのではなく、AIを活用する形で使用しています。<br>
+          <a href="https://chat.openai.com">ChatGPT</a>と<a href="https://claude.ai">ClaudeAI</a>を使用しています。
+        </p>
+      </div>
+    </section>
+  </main>
   <import src="common/footer.html"></import>
 </body>
 </html>
