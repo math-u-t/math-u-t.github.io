@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Explore | math-u-t</title>
   <script src="https://math-u-t.github.io/src/import.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="image/favicon.png" type="image/png">
@@ -13,15 +14,36 @@
   <header aria-label="ヘッダー">
     <div class="container">
       <div class="hero-content">
-        <h1 class="hero-title">math-u-t</h1>
+        <a href="/">
+          <h1 class="hero-title">math-u-t</h1>
+        </a>
         <p class="hero-subtitle">作成した記事</p>
+        <p class="hero-description">
+          このページでは、math-u-tの作成した記事を見ることができます。<br>
+          noteではマークダウンが使いにくいので、そういった記事をたまに更新しているので楽しんでください！<br>
+        </p>
       </div>
+    </div>
+    <div class="search">
+      <div class="search-square">
+        <i class="fas fa-search"></i>
+      </div>
+      <input class="search-input">
     </div>
   </header>
   <main>
-    <section class="projects" id="article-1">
+    <section class="projects" data-search="18の星ChatGPTとClaudeで協力して作成してもらった(ハッピーエンドの)近未来小説です。※元ネタは私ですが、主に作成したのはAIです。">
+      <a href="pages/article-2.html">
+        <h2>18の星 2025.08.08</h2>
+        <p>
+          ChatGPTとClaudeで協力して作成してもらった(ハッピーエンドの)近未来小説です。<br>
+          ※元ネタは私ですが、主に作成したのはAIです。</div>
+        </p>
+      </a>
+    </section>
+    <section class="projects" data-search="JavaScriptフレームワークについてJavaScriptのフレームワークは、数多くあり、それらは基本的に無料で提供されていますが、機能が少なかったりします。そこで、欲しい機能をまとめたら楽になると思い、作成しています。">
       <a href="pages/article-1.html">
-        <h2>JavaScriptフレームワークについて</h2>
+        <h2>JavaScriptフレームワークについて 2025.08.07</h2>
         <p>
           JavaScriptのフレームワークは、数多くあり、それらは基本的に無料で提供されていますが、機能が少なかったりします。<br>
           そこで、欲しい機能をまとめたら楽になると思い、作成しています。
@@ -30,5 +52,24 @@
     </section>
   </main>
   <import src="common/footer.html"></import>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const input = document.querySelector(".search-input");
+      const projects = document.querySelectorAll(".projects");
+
+      input.addEventListener("input", () => {
+        const query = input.value.trim().toLowerCase();
+
+        projects.forEach(project => {
+          const text = project.getAttribute("data-search").toLowerCase();
+          if (text.includes(query)) {
+            project.style.display = "";
+          } else {
+            project.style.display = "none";
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
