@@ -15,7 +15,9 @@
     <div class="container">
       <div class="hero-content">
         <a href="/">
-          <h1 class="hero-title">math-u-t</h1>
+          <div class="home">
+            <h1 class="hero-title">math-u-t</h1>
+          </div>
         </a>
         <p class="hero-subtitle">作成した記事</p>
         <p class="hero-description">
@@ -23,12 +25,6 @@
           noteではマークダウンが使いにくいので、そういった記事をたまに更新しているので楽しんでください！<br>
         </p>
       </div>
-    </div>
-    <div class="search">
-      <div class="search-square">
-        <i class="fas fa-search"></i>
-      </div>
-      <input class="search-input">
     </div>
   </header>
   <main>
@@ -52,24 +48,5 @@
     </section>
   </main>
   <import src="common/footer.html"></import>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const input = document.querySelector(".search-input");
-      const projects = document.querySelectorAll(".projects");
-
-      input.addEventListener("input", () => {
-        const query = input.value.trim().toLowerCase();
-
-        projects.forEach(project => {
-          const text = project.getAttribute("data-search").toLowerCase();
-          if (text.includes(query)) {
-            project.style.display = "";
-          } else {
-            project.style.display = "none";
-          }
-        });
-      });
-    });
-  </script>
 </body>
 </html>
