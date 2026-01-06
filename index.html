@@ -149,27 +149,40 @@
         <span class="material-icons">contact_mail</span>連絡手段
       </h2>
       <div class="contact-grid">
-        <a href="mailto:math-u-t@proton.me" class="contact-item">
-          <span class="material-icons">email</span>
-          <div class="contact-info">
-            <div class="contact-label">Email</div>
-            <div class="contact-value">math-u-t@proton.me</div>
+        <!-- メールアドレスアコーディオン -->
+        <div class="email-accordion">
+          <button class="accordion-trigger contact-item" id="emailAccordion">
+            <span class="material-icons">email</span>
+            <div class="contact-info">
+              <div class="contact-label">Email (複数あります)</div>
+              <div class="contact-value">クリックして表示</div>
+            </div>
+            <span class="material-icons accordion-icon">expand_more</span>
+          </button>
+          <div class="accordion-content" id="emailContent">
+            <a href="mailto:math-u-t@proton.me" class="email-item">
+              <span class="material-icons">mark_email_read</span>
+              <div class="email-info">
+                <div class="email-label">メイン</div>
+                <div class="email-value">math-u-t@proton.me</div>
+              </div>
+            </a>
+            <a href="mailto:math-u-t@googlegroups.com" class="email-item">
+              <span class="material-icons">mark_email_read</span>
+              <div class="email-info">
+                <div class="email-label">グループ</div>
+                <div class="email-value">math-u-t@googlegroups.com</div>
+              </div>
+            </a>
+            <a href="mailto:i@math-u-t.dedyn.io" class="email-item">
+              <span class="material-icons">mark_email_read</span>
+              <div class="email-info">
+                <div class="email-label">サブ</div>
+                <div class="email-value">i@math-u-t.dedyn.io</div>
+              </div>
+            </a>
           </div>
-        </a>
-        <a href="mailto:math-u-t@googlegroups.com" class="contact-item">
-          <span class="material-icons">email</span>
-          <div class="contact-info">
-            <div class="contact-label">Email</div>
-            <div class="contact-value">math-u-t@googlegroups.com</div>
-          </div>
-        </a>
-        <a href="mailto:i@math-u-t.dedyn.io" class="contact-item">
-          <span class="material-icons">email</span>
-          <div class="contact-info">
-            <div class="contact-label">Email</div>
-            <div class="contact-value">i@math-u-t.dedyn.io</div>
-          </div>
-        </a>
+        </div>
         <a href="https://discord.com/" target="_blank" rel="noopener" class="contact-item">
           <span class="material-icons">forum</span>
           <div class="contact-info">

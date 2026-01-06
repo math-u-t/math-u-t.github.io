@@ -91,6 +91,21 @@ header {
   text-align: center;
   padding: 60px 0;
   border-bottom: 1px solid #e0e0e0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  margin: -40px -20px 0 -20px;
+  padding: 80px 20px;
+  border-radius: 0 0 30px 30px;
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+}
+
+body.dark-mode header {
+  background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+header h1,
+header .subtitle {
+  color: white;
 }
 
 h1 {
@@ -115,10 +130,39 @@ h2 {
   font-weight: 400;
   margin-bottom: 30px;
   padding-bottom: 10px;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 3px solid transparent;
+  border-image: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  border-image-slice: 1;
   display: flex;
   align-items: center;
   gap: 10px;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+body.dark-mode h2 {
+  background: linear-gradient(90deg, #9fa8da 0%, #b39ddb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  border-image: linear-gradient(90deg, #9fa8da 0%, #b39ddb 100%);
+  border-image-slice: 1;
+}
+
+h2 .material-icons {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+body.dark-mode h2 .material-icons {
+  background: linear-gradient(135deg, #9fa8da 0%, #b39ddb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .contact-grid {
@@ -135,15 +179,34 @@ h2 {
   padding: 20px;
   background: white;
   border: 1px solid #e0e0e0;
-  border-radius: 4px;
-  transition: all 0.3s ease;
+  border-radius: 8px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   text-decoration: none;
   color: #212121;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.contact-item:hover::before {
+  left: 100%;
 }
 
 .contact-item:hover {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(102, 126, 234, 0.2);
+  transform: translateY(-6px) scale(1.02);
+  border-color: #667eea;
 }
 
 .contact-item .material-icons {
@@ -180,14 +243,35 @@ h2 {
 .project-card {
   background: white;
   border: 1px solid #e0e0e0;
-  border-radius: 4px;
+  border-radius: 8px;
   padding: 30px;
   margin-bottom: 25px;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover::before {
+  transform: scaleY(1);
 }
 
 .project-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 12px 28px rgba(102, 126, 234, 0.25);
+  transform: translateY(-8px);
+  border-color: #667eea;
 }
 
 .project-header {
@@ -241,8 +325,16 @@ h2 {
 .skill-category {
   background: white;
   border: 1px solid #e0e0e0;
-  border-radius: 4px;
+  border-radius: 8px;
   padding: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.skill-category:hover {
+  box-shadow: 0 12px 24px rgba(102, 126, 234, 0.2);
+  transform: translateY(-6px);
+  border-color: #667eea;
 }
 
 .skill-category h3 {
@@ -276,8 +368,16 @@ h2 {
 .about-card {
   background: white;
   border: 1px solid #e0e0e0;
-  border-radius: 4px;
+  border-radius: 8px;
   padding: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.about-card:hover {
+  box-shadow: 0 12px 24px rgba(102, 126, 234, 0.2);
+  transform: translateY(-6px);
+  border-color: #667eea;
 }
 
 .about-text {
@@ -334,15 +434,17 @@ h2 {
   padding: 20px;
   background: white;
   border: 1px solid #e0e0e0;
-  border-radius: 4px;
+  border-radius: 8px;
   text-decoration: none;
   color: #212121;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .stat-card:hover {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(102, 126, 234, 0.2);
+  transform: translateY(-6px) scale(1.02);
+  border-color: #667eea;
 }
 
 .stat-card .material-icons {
@@ -368,8 +470,16 @@ h2 {
   gap: 20px;
   background: white;
   border: 1px solid #e0e0e0;
-  border-radius: 4px;
+  border-radius: 8px;
   padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.github-cards:hover {
+  box-shadow: 0 12px 24px rgba(102, 126, 234, 0.2);
+  transform: translateY(-6px);
+  border-color: #667eea;
 }
 
 footer {
@@ -417,6 +527,144 @@ body.dark-mode .theme-toggle {
 
 body.dark-mode .theme-toggle .material-icons {
   color: #ffd700;
+}
+
+/* メールアドレスアコーディオン */
+.email-accordion {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
+  transition: all 0.3s ease;
+}
+
+.email-accordion:hover {
+  box-shadow: 0 12px 32px rgba(102, 126, 234, 0.4);
+  transform: translateY(-4px);
+}
+
+body.dark-mode .email-accordion {
+  background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .email-accordion:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+}
+
+.accordion-trigger {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  position: relative;
+  padding: 20px;
+}
+
+.accordion-trigger .material-icons,
+.accordion-trigger .contact-label,
+.accordion-trigger .contact-value {
+  color: white;
+}
+
+.accordion-trigger:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.accordion-icon {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.3s ease;
+  color: white !important;
+}
+
+.accordion-trigger.active .accordion-icon {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 0 0 8px 8px;
+}
+
+body.dark-mode .accordion-content {
+  background: rgba(45, 45, 45, 0.95);
+}
+
+.accordion-content.active {
+  max-height: 500px;
+}
+
+.email-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 20px;
+  text-decoration: none;
+  color: #212121;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.email-item:last-child {
+  border-bottom: none;
+}
+
+.email-item:hover {
+  background: rgba(102, 126, 234, 0.1);
+  padding-left: 30px;
+}
+
+body.dark-mode .email-item {
+  color: #e0e0e0;
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .email-item:hover {
+  background: rgba(102, 126, 234, 0.2);
+}
+
+.email-item .material-icons {
+  font-size: 20px;
+  color: #667eea;
+}
+
+body.dark-mode .email-item .material-icons {
+  color: #9fa8da;
+}
+
+.email-info {
+  flex: 1;
+}
+
+.email-label {
+  font-size: 0.75rem;
+  color: #757575;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+body.dark-mode .email-label {
+  color: #a0a0a0;
+}
+
+.email-value {
+  font-size: 0.95rem;
+  color: #212121;
+  margin-top: 2px;
+}
+
+body.dark-mode .email-value {
+  color: #e0e0e0;
 }
 
 @media (max-width: 768px) {

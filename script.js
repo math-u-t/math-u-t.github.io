@@ -169,3 +169,45 @@ class ParticleBackground {
 window.addEventListener('DOMContentLoaded', () => {
   new ParticleBackground();
 });
+
+// ============================================
+// 4. メールアドレスアコーディオン
+// ============================================
+const emailAccordion = document.getElementById('emailAccordion');
+const emailContent = document.getElementById('emailContent');
+
+if (emailAccordion && emailContent) {
+  emailAccordion.addEventListener('click', () => {
+    emailAccordion.classList.toggle('active');
+    emailContent.classList.toggle('active');
+  });
+}
+
+// ============================================
+// 5. スクロールアニメーション
+// ============================================
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const fadeInObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, observerOptions);
+
+// アニメーション対象の要素を設定
+window.addEventListener('DOMContentLoaded', () => {
+  const animatedElements = document.querySelectorAll('.project-card, .skill-category, .contact-item, .stat-card, .github-cards, .about-card, .email-accordion');
+
+  animatedElements.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    fadeInObserver.observe(el);
+  });
+});
