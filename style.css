@@ -9,6 +9,76 @@ body {
   background: #fafafa;
   color: #212121;
   line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ダークモード */
+body.dark-mode {
+  background: #1a1a1a;
+  color: #e0e0e0;
+}
+
+body.dark-mode .contact-item,
+body.dark-mode .project-card,
+body.dark-mode .skill-category,
+body.dark-mode .about-card,
+body.dark-mode .stat-card,
+body.dark-mode .github-cards,
+body.dark-mode .note {
+  background: #2d2d2d;
+  border-color: #404040;
+  color: #e0e0e0;
+}
+
+body.dark-mode .contact-item:hover,
+body.dark-mode .project-card:hover,
+body.dark-mode .stat-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .skill-tag {
+  background: #3a3a3a;
+  border-color: #505050;
+  color: #e0e0e0;
+}
+
+body.dark-mode .skill-tag:hover {
+  background: #454545;
+}
+
+body.dark-mode .highlight-item {
+  background: #252525;
+  border-color: #404040;
+}
+
+body.dark-mode header,
+body.dark-mode h2,
+body.dark-mode footer {
+  border-color: #404040;
+}
+
+body.dark-mode .project-link:hover {
+  border-bottom-color: #e0e0e0;
+}
+
+body.dark-mode .contact-value,
+body.dark-mode .project-title,
+body.dark-mode .about-text,
+body.dark-mode .highlight-value {
+  color: #e0e0e0;
+}
+
+body.dark-mode .contact-label,
+body.dark-mode .project-description,
+body.dark-mode .stat-label,
+body.dark-mode .highlight-label,
+body.dark-mode .subtitle,
+body.dark-mode .note {
+  color: #a0a0a0;
+}
+
+body.dark-mode .material-icons {
+  color: #b0b0b0;
 }
 
 .container {
@@ -309,6 +379,44 @@ footer {
   font-size: 0.9rem;
   border-top: 1px solid #e0e0e0;
   margin-top: 60px;
+}
+
+/* ダークモード切り替えボタン */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+body.dark-mode .theme-toggle {
+  background: #2d2d2d;
+  border-color: #404040;
+}
+
+.theme-toggle .material-icons {
+  font-size: 24px;
+  color: #424242;
+}
+
+body.dark-mode .theme-toggle .material-icons {
+  color: #ffd700;
 }
 
 @media (max-width: 768px) {
