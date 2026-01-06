@@ -211,3 +211,193 @@ window.addEventListener('DOMContentLoaded', () => {
     fadeInObserver.observe(el);
   });
 });
+
+// ============================================
+// 6. スムーススクロール
+// ============================================
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href');
+    if (targetId === '#') return;
+
+    const targetElement = document.querySelector(targetId);
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  });
+});
+
+// ============================================
+// 7. トップに戻るボタン
+// ============================================
+const scrollToTopBtn = document.getElementById('scrollToTop');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 300) {
+    scrollToTopBtn.classList.add('visible');
+  } else {
+    scrollToTopBtn.classList.remove('visible');
+  }
+});
+
+scrollToTopBtn.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});
+
+// ============================================
+// 8. スクロール進捗バー
+// ============================================
+const scrollProgress = document.getElementById('scrollProgress');
+
+window.addEventListener('scroll', () => {
+  const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = (window.scrollY / windowHeight) * 100;
+  scrollProgress.style.width = scrolled + '%';
+});
+
+// ============================================
+// 9. メールアドレスコピー機能
+// ============================================
+const copyButtons = document.querySelectorAll('.copy-btn');
+
+copyButtons.forEach(btn => {
+  btn.addEventListener('click', async (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const email = btn.getAttribute('data-email');
+
+    try {
+      await navigator.clipboard.writeText(email);
+
+      // ボタンのアイコンを一時的に変更
+      const icon = btn.querySelector('.material-icons');
+      const originalIcon = icon.textContent;
+      icon.textContent = 'check';
+      btn.classList.add('copied');
+
+      // 通知を表示
+      showCopyNotification(email);
+
+      setTimeout(() => {
+        icon.textContent = originalIcon;
+        btn.classList.remove('copied');
+      }, 2000);
+    } catch (err) {
+      console.error('コピーに失敗しました:', err);
+    }
+  });
+});
+
+function showCopyNotification(email) {
+  const notification = document.createElement('div');
+  notification.className = 'copy-notification';
+  notification.innerHTML = `
+    <span class="material-icons">check_circle</span>
+    <span>${email} をコピーしました</span>
+  `;
+
+  document.body.appendChild(notification);
+
+  setTimeout(() => {
+    notification.remove();
+  }, 3000);
+}
+
+// ============================================
+// 10. ローディング画面
+// ============================================
+window.addEventListener('load', () => {
+  const loadingScreen = document.getElementById('loadingScreen');
+  setTimeout(() => {
+    loadingScreen.classList.add('hidden');
+  }, 1000);
+});
+
+// ============================================
+// 11. コナミコマンド (イースターエッグ)
+// ============================================
+const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+let konamiIndex = 0;
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === konamiCode[konamiIndex]) {
+    konamiIndex++;
+
+    if (konamiIndex === konamiCode.length) {
+      activateKonamiEasterEgg();
+      konamiIndex = 0;
+    }
+  } else {
+    konamiIndex = 0;
+  }
+});
+
+function activateKonamiEasterEgg() {
+  // 紙吹雪エフェクト
+  createConfetti();
+
+  // 通知を表示
+  const notification = document.createElement('div');
+  notification.className = 'copy-notification';
+  notification.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+  notification.innerHTML = `
+    <span class="material-icons">celebration</span>
+    <span>コナミコマンド発動！おめでとうございます！</span>
+  `;
+
+  document.body.appendChild(notification);
+
+  setTimeout(() => {
+    notification.remove();
+  }, 3000);
+}
+
+function createConfetti() {
+  const colors = ['#667eea', '#764ba2', '#f093fb', '#4facfe', '#43e97b'];
+  const confettiCount = 100;
+
+  for (let i = 0; i < confettiCount; i++) {
+    setTimeout(() => {
+      const confetti = document.createElement('div');
+      confetti.style.position = 'fixed';
+      confetti.style.width = '10px';
+      confetti.style.height = '10px';
+      confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+      confetti.style.left = Math.random() * window.innerWidth + 'px';
+      confetti.style.top = '-10px';
+      confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+      confetti.style.zIndex = '10000';
+      confetti.style.pointerEvents = 'none';
+      confetti.style.opacity = '1';
+      confetti.style.transform = 'rotate(' + (Math.random() * 360) + 'deg)';
+
+      document.body.appendChild(confetti);
+
+      const fallDuration = 3000 + Math.random() * 2000;
+      const rotation = Math.random() * 720 - 360;
+      const drift = Math.random() * 200 - 100;
+
+      confetti.animate([
+        {
+          transform: `translateY(0) translateX(0) rotate(0deg)`,
+          opacity: 1
+        },
+        {
+          transform: `translateY(${window.innerHeight + 10}px) translateX(${drift}px) rotate(${rotation}deg)`,
+          opacity: 0
+        }
+      ], {
+        duration: fallDuration,
+        easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+      }).onfinish = () => confetti.remove();
+    }, i * 300);
+  }
+}

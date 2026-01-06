@@ -667,6 +667,212 @@ body.dark-mode .email-value {
   color: #e0e0e0;
 }
 
+/* スクロール進捗バー */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  z-index: 9999;
+  transition: width 0.1s ease;
+  box-shadow: 0 2px 4px rgba(102, 126, 234, 0.5);
+}
+
+/* トップに戻るボタン */
+.scroll-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  transition: all 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scroll-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-to-top:hover {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.6);
+}
+
+.scroll-to-top .material-icons {
+  color: white;
+  font-size: 24px;
+}
+
+body.dark-mode .scroll-to-top {
+  background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+}
+
+/* ローディング画面 */
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.loading-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loading-content {
+  text-align: center;
+  color: white;
+}
+
+.loading-spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-text {
+  font-size: 1.2rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* コピーボタン */
+.copy-btn {
+  background: transparent;
+  border: 1px solid #667eea;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.copy-btn:hover {
+  background: #667eea;
+  transform: scale(1.1);
+}
+
+.copy-btn .material-icons {
+  font-size: 18px;
+  color: #667eea;
+  transition: color 0.3s ease;
+}
+
+.copy-btn:hover .material-icons {
+  color: white;
+}
+
+body.dark-mode .copy-btn {
+  border-color: #9fa8da;
+}
+
+body.dark-mode .copy-btn .material-icons {
+  color: #9fa8da;
+}
+
+body.dark-mode .copy-btn:hover {
+  background: #9fa8da;
+}
+
+body.dark-mode .copy-btn:hover .material-icons {
+  color: white;
+}
+
+.copy-btn.copied {
+  background: #4caf50;
+  border-color: #4caf50;
+}
+
+.copy-btn.copied .material-icons {
+  color: white;
+}
+
+/* コピー通知 */
+.copy-notification {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  background: #4caf50;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 10001;
+  animation: slideIn 0.3s ease, slideOut 0.3s ease 2.7s;
+  opacity: 0;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+}
+
 @media (max-width: 768px) {
   h1 {
     font-size: 2rem;

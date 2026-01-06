@@ -12,9 +12,25 @@
 </head>
 
 <body>
+  <!-- スクロール進捗バー -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- ローディング画面 -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loading-content">
+      <div class="loading-spinner"></div>
+      <div class="loading-text">Loading...</div>
+    </div>
+  </div>
+
   <!-- ダークモード切り替えボタン -->
   <button class="theme-toggle" id="themeToggle" aria-label="テーマ切り替え">
     <span class="material-icons">dark_mode</span>
+  </button>
+
+  <!-- トップに戻るボタン -->
+  <button class="scroll-to-top" id="scrollToTop" aria-label="トップに戻る">
+    <span class="material-icons">arrow_upward</span>
   </button>
 
   <div class="container">
@@ -160,30 +176,39 @@
             <span class="material-icons accordion-icon">expand_more</span>
           </button>
           <div class="accordion-content" id="emailContent">
-            <a href="mailto:math-u-t@proton.me" class="email-item">
+            <div class="email-item">
               <span class="material-icons">mark_email_read</span>
               <div class="email-info">
                 <div class="email-label">メイン</div>
                 <div class="email-value">math-u-t@proton.me</div>
               </div>
-            </a>
-            <a href="mailto:math-u-t@googlegroups.com" class="email-item">
+              <button class="copy-btn" data-email="math-u-t@proton.me" aria-label="メールアドレスをコピー">
+                <span class="material-icons">content_copy</span>
+              </button>
+            </div>
+            <div class="email-item">
               <span class="material-icons">mark_email_read</span>
               <div class="email-info">
                 <div class="email-label">グループ</div>
                 <div class="email-value">math-u-t@googlegroups.com</div>
               </div>
-            </a>
-            <a href="mailto:i@math-u-t.dedyn.io" class="email-item">
+              <button class="copy-btn" data-email="math-u-t@googlegroups.com" aria-label="メールアドレスをコピー">
+                <span class="material-icons">content_copy</span>
+              </button>
+            </div>
+            <div class="email-item">
               <span class="material-icons">mark_email_read</span>
               <div class="email-info">
                 <div class="email-label">サブ</div>
                 <div class="email-value">i@math-u-t.dedyn.io</div>
               </div>
-            </a>
+              <button class="copy-btn" data-email="i@math-u-t.dedyn.io" aria-label="メールアドレスをコピー">
+                <span class="material-icons">content_copy</span>
+              </button>
+            </div>
           </div>
         </div>
-        <a href="https://discord.com/" target="_blank" rel="noopener" class="contact-item">
+        <a href="https://discord.com/users/1381479045492899840" target="_blank" rel="noopener" class="contact-item">
           <span class="material-icons">forum</span>
           <div class="contact-info">
             <div class="contact-label">Discord</div>
